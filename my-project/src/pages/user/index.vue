@@ -18,13 +18,12 @@
       <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
       <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
     </form>
-    <a href="/pages/user/main" class="counter">去往index示例页面</a>
+    <div @click="bindViewIndex"  class="counter">去往index示例页面</div>
   </div>
 </template>
 
 <script>
 import card from '@/components/card'
-let utils = require('@/utils/index.js');
 
 export default {
   data () {
@@ -67,7 +66,20 @@ export default {
         success: function(res){
           // success
           console.log(res)
-          console.log(utils.default.formatNumber(111))
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+    },
+    bindViewIndex() {
+      wx.redirectTo({
+        url: '/pages/counter/main',
+        success: function(res){
+          // success
         },
         fail: function() {
           // fail
@@ -83,7 +95,6 @@ export default {
     // 调用应用实例的方法获取全局数据
     this.getUserInfo();
     this.getIndexInfo();
-
   }
 }
 </script>

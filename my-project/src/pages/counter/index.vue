@@ -6,7 +6,7 @@
       <button @click="decrement">-</button>
     </p>
 
-    <a href="/pages/index/main" class="home">去往首页</a>
+    <div @click="bindViewIndex" class="home">去往首页</div>
   </div>
 </template>
 
@@ -26,6 +26,20 @@ export default {
     },
     decrement () {
       store.commit('decrement')
+    },
+    bindViewIndex() {
+      wx.redirectTo({
+        url: '/pages/index/main',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
     }
   }
 }
